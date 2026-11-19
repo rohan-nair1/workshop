@@ -17,8 +17,13 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    controller.a().whileTrue(indexer.Forward());
-    controller.x().whileTrue(indexer.Backwards());
+    // controller.a().whileTrue(indexer.Forward());
+    // controller.x().whileTrue(indexer.Backwards());
+
+    controller.a().and(controller.x().negate()).whileTrue(indexer.Forward());
+    controller.x().and(controller.a().negate()).whileTrue(indexer.Backwards());
+
+
   }
 
   public Command getAutonomousCommand() {
